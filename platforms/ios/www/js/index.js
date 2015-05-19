@@ -16,10 +16,31 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+ var geoloc = {
+
+     onSuccess : function(position) {
+         console.log(position);
+         var options = {
+             ll     : position.coords.latitude + ',' + position.coords.longitude,
+             radius : 100
+         };
+
+         api.get(options);
+     },
+
+     onError : function(err) {
+         alert(err.message);
+     }
+
+ };
+
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+        this.startBach();
+        console.log('hey');
     },
     // Bind Event Listeners
     //
@@ -33,18 +54,12 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+
     },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+    startBach : function() {
+        console.log('coucou');
+        navigator.geolocation.getCurrentPosition(geoloc.onSuccess, geoloc.onError);
     }
 };
 

@@ -181,22 +181,55 @@ h1 {
     width: 100%;
 }
 
-.info-article {
+.article .info-article {
     height: 37px;
     padding: 0 25px;
 }
 
-.name {
+.article .name {
     color: #000;
     font-weight: 300;
     float: left;
 }
 
-.price {
+.article .price {
     color: #000;
     float: right;
 }
 
-.image img {
+.article .image img {
+    max-width: 100%;
+}
+
+.article-grid {
+    width: 100%;
+}
+
+.article-grid .info-article {
+    height: 37px;
+    padding: 0 25px;
+}
+
+.article-grid .name {
+    color: #000;
+    font-weight: 300;
+    float: left;
+}
+
+.article-grid .price {
+    color: #000;
+    float: right;
+}
+
+.article-grid .image {
+    width: 33%; 
+    float: left;
+}
+
+.article-grid .image:nth-child(4n+1) {
+    border-right: .5%;
+}
+
+.article-grid .image img {
     max-width: 100%;
 }
