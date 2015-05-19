@@ -22,8 +22,6 @@ exports.around = function(req, res) {
 
     foursquare.api('explore', req.query, function(err, foursquareData) {
 
-        console.log(foursquareData.length);
-
         async.each(foursquareData, function(data, cb) {
             addData(data).then(function(insta) {
                 batchEventEmitter.emit('data', insta);
