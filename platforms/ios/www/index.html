@@ -28,22 +28,52 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
+        <meta charset="UTF-8">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Hello World</title>
+        <title>Instafood</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <div data-role="page" class="app" id="front-page">
+            <div data-role="header" id="header">
+                <h1>instafood</h1>
+                <span class="icon-ellipsis"></span>
+            </div>
+
+            <div role="main" class="ui-content">
+                <div class="display">
+                    <span class="icon-grid"></span>
+                    <span class="icon-menu"></span>
+                </div>
+                <div class="article">
+                    <div class="info-article">
+                        <p class="name">Resto 1</p>
+                        <p class="price">€€</p>
+                    </div>
+                    <div class="image"><img src="img/burger.jpg" alt="burger"></div>
+                </div>
+                <div class="article">
+                    <div class="info-article">
+                        <p class="name">Resto 1</p>
+                        <p class="price">€€</p>
+                    </div>
+                    <div class="image"><img src="img/burger.jpg" alt="burger"></div>
+                </div>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
+
+
+        <!--  LIBS -->
+        <script type="text/javascript" src="js/lib/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="js/lib/lodash/lodash.min.js"></script>
+
+        <!--  SCRIPT PERSOS -->
+        <script type="text/javascript" src="js/app/api/instagram.js"></script>
+
+        <!-- LANCE L'APPLICATION MOBILE -->
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>

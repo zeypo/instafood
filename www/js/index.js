@@ -20,7 +20,6 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        instagram.api('search', {lat : 48.858844, lng : 2.294351});
     },
     // Bind Event Listeners
     //
@@ -46,8 +45,6 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-
-        instagram.api('search', {lat : 48.858844, lng : 2.294351});
     }
 };
 
