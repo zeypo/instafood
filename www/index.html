@@ -45,10 +45,10 @@
 
             <div role="main" class="ui-content">
                 <div class="display">
-                    <span class="icon-grid"></span>
-                    <span class="icon-menu"></span>
+                    <span onclick="menu()" class="icon-grid"></span>
+                    <span onclick="displayGrid()" class="icon-menu"></span>
                 </div>
-                <!-- <div class="article">
+                <!-- <div id="article">
                     <div class="info-article">
                         <p class="name">Resto 1</p>
                         <p class="price">€€</p>
@@ -62,18 +62,20 @@
                     </div>
                     <div class="image"><img src="img/burger.jpg" alt="burger"></div>
                 </div> -->
-                <div class="article-grid">
-                    <div class="ui-block-a"><img src="img/burger.jpg" alt=""></div>
-                    <div class="ui-block-b"><img src="img/plateau.jpg" alt=""></div>
-                    <div class="ui-block-c"><img src="img/steak.jpg" alt=""></div>
-                    <div class="ui-block-a"><img src="img/burger.jpg" alt=""></div>
-                    <div class="ui-block-b"><img src="img/plateau.jpg" alt=""></div>
-                    <div class="ui-block-c"><img src="img/steak.jpg" alt=""></div>
+                <div id="articlegrid" class="">
+                    <img class="image" src="img/burger.jpg" alt="">
+                    <img class="image" src="img/plateau.jpg" alt="">
+                    <img class="image" src="img/steak.jpg" alt="">
+                    <img class="image" src="img/burger.jpg" alt="">
+                    <img class="image" src="img/plateau.jpg" alt="">
+                    <img class="image" src="img/steak.jpg" alt="">
                 </div>
             </div>
         </div>
 
+        <script>
 
+        </script>
         <!--  LIBS -->
         <script type="text/javascript" src="js/lib/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="js/lib/lodash/lodash.min.js"></script>
