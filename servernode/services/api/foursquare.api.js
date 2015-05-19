@@ -4,8 +4,6 @@ var request = require('request');
 var _       = require('lodash');
 var async   = require('async');
 
-//&client_id=I5IWL1OD0BWB1N31NQAZKF3OIFCL5LGDPAPL5JV3KGMNBQSZ&client_secret=SBUMRO4DGBIKSHDSROWLGCKQ0J2ZC0PA4DMJTOX5WJ51X2YZ&v=20140806&m=swarm
-
 var Foursquare = function() {
 
     var self = this;
@@ -37,9 +35,12 @@ var Foursquare = function() {
 
     this.cleanJson = function(json, cb) {
 
+        var cleanJson = [];
+
         cb(null, _.reduce(json, function(_json, value, key) {
-            _json[key] = value.venue;
-            return _json;
+            //_json[key] = value.venue;
+            cleanJson.push(value.venue);
+            return cleanJson;
         }));
     };
 
