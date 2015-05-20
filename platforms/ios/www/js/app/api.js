@@ -17,9 +17,14 @@ var Api = function() {
         });
     };
 
+    /**
+     * Génére le html sur la home après la reception de la position
+     * @param {Array} data
+     */
     this.onSuccess = function(data) {
         console.log(data);
-        //alert(JSON.stringify(data));
+        homeController.setPlaces(data.response);
+        homeController.generateHtml();
     };
 
     this.onError = function(err) {
