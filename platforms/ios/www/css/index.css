@@ -153,7 +153,8 @@ h1 {
 }
 
 #articlegrid .article {
-    width: 100%;
+    float: left;
+    width: 33%;
 }
 
 #articlegrid .article .info-article {
@@ -171,17 +172,15 @@ h1 {
     float: right;
 }
 
-#articlegrid .article .image {
-    width: 33%; 
-    float: left;
+#articlegrid .article .image { 
     max-width: 100%;
 }
 
-#articlegrid .article .image:nth-child(3n+1) {
+#articlegrid .article:nth-child(3n+1) {
     margin-right: 0.5%;
 }
 
-#articlegrid .article .image:nth-child(3n+2) {
+#articlegrid .article:nth-child(3n+2) {
     margin-right: 0.5%;
 }
 
