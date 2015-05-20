@@ -17,19 +17,32 @@
  * under the License.
  */
 
+var user = {
+
+    position : {
+        lat : null,
+        lng : null
+    },
+
+    options : {
+        radius         : 300,
+        section        : 'food',
+        sortByDistance : 1,
+        limit          : 50
+    }
+
+};
+
 var geoloc = {
 
     onSuccess : function(position) {
-        console.log(position);
-        var options = {
-            ll             : position.coords.latitude + ',' + position.coords.longitude,
-            radius         : 300,
-            section        : 'food',
-            sortByDistance : 1,
-            limit          : 50
-        };
 
-        api.get(options);
+        user.position.lat = position.coords.latitude;
+        user.position.lng = position.coords.longitude;
+
+        user.options.ll = position.coords.latitude + ',' + position.coords.longitude;
+
+        api.get(user.options);
     },
 
      onError : function(err) {

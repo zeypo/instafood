@@ -6,19 +6,25 @@ var HomeController = function(){
 
     this.places = null;
     this.$grid  = null;
-    this.$article = null;
-    this.map      = null;
+    this.map    = null;
 
     this.init = function() {
         this.$grid = $('.articlegrid');
-        this.$article = $('.article');
 
-        console.log(self.$article);
+        $(document).off('pagebeforeshow');
+        $(document).off('pageload');
 
         $('.article').on('tap', function() {
             var id = $(this).attr('data-id');
             self.loadPlacePage(id)
         });
+
+        $('.back-to-home').on('tap', function() {
+            $(document).transition('to', 'index.html', 'flip')
+            $(document).on('pageload', function() {
+                self.generateHtml();
+            });
+        })
     };
 
     this.loadPlacePage = function(id) {
@@ -27,6 +33,8 @@ var HomeController = function(){
         $(document).transition('to', 'place-info.html', 'flip')
 
         $(document).on('pagebeforeshow', function() {
+
+            $('.content-place').html('');
 
             var str  = '<img src="' + place.photos.images.standard_resolution.url + '">';
                 str += '<div>';
@@ -37,8 +45,11 @@ var HomeController = function(){
                 str += '</div>';
 
             $('.content-place').append(str);
+
+            $('.map-canvas-wrapper').html('<div id="map-canvas" class="clear"></div>');
             console.log(place.location.lat, place.location.lng);
             self.getMap(place.location.lat, place.location.lng);
+            self.init();
 
         });
     }
@@ -49,16 +60,16 @@ var HomeController = function(){
      */
     this.generateHtml = function() {
 
-        console.log(self.$grid);
-        console.log(self.places);
+        self.$grid = $('.articlegrid');
         if(self.places !== null) {
 
+            console.log('coucou');
             self.$grid.empty();
 
             self.places.forEach(function(place) {
                 if(place !== null && place.photos !== null) {
 
-                    var price = place.price ? place.price.currency : '';
+                    var price = place.price ? self.getPrice(place.price.tier) : '';
 
                     var str  = '<div class="article" data-id="' + place.id + '"><div class="info-article">';
                         str += '<p class="name">' + place.name + '</p>';

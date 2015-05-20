@@ -22,7 +22,6 @@ var Api = function() {
      * @param {Array} data
      */
     this.onSuccess = function(data) {
-        console.log(data);
         homeController.setPlaces(data.response);
         homeController.generateHtml();
     };
@@ -30,7 +29,6 @@ var Api = function() {
     this.onError = function(err) {
         console.log('error');
         console.log(err);
-        //alert(JSON.stringify(err));
     };
 };
 
