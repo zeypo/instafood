@@ -112,17 +112,6 @@ body {
     bottom: 0;
 }
 
-#header .icon-arrow-left {
-    font-size: 1.7em;
-    display: block;
-    position: absolute;
-    height: 50%;
-    margin: auto;
-    left: 30px;
-    top: 0;
-    bottom: 0;
-}
-
 .display {
     height: 66px;
     box-sizing:border-box;
@@ -208,12 +197,27 @@ body {
     color: #ee6e73;
 }
 
+#header .icon-arrow-left {
+    font-size: 1.7em;
+    display: block;
+    position: absolute;
+    height: 40%;
+    margin: auto;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+}
+
 #place-info p:nth-child(odd) {
-    width: 66%;
-    padding-left: 2%;
+    width: 64%;
+    padding-left: 4%;
     margin-right: 4%;
     padding-top: 30px;
     float: left;
+}
+
+#place-info img {
+    max-width: 100%;
 }
 
 #place-info p:nth-child(3),
@@ -222,8 +226,8 @@ body {
 }
 
 #place-info p:nth-child(even) {
-    width: 26%;
-    padding-right: 2%;
+    width: 24%;
+    padding-right: 4%;
     padding-top: 30px;
     text-align: right;
     float: right;
