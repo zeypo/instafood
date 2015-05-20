@@ -127,61 +127,61 @@ h1 {
     margin-right: 25px;
 }
 
-#article {
-    width: 100%;
-}
-
-#article .info-article {
+#articlemenu .article .info-article {
+    display: block;
     height: 37px;
     padding: 0 25px;
 }
 
-#article .name {
+#articlemenu .article .info-article p{
+    line-height: 37px;
+}
+
+#articlemenu .article .name {
     color: #000;
     font-weight: 300;
     float: left;
 }
 
-#article .price {
+#articlemenu .article .price {
     color: #000;
     float: right;
 }
 
-#article .image img {
+#articlemenu .article .image {
     max-width: 100%;
 }
 
-#articlegrid {
+#articlegrid .article {
     width: 100%;
 }
 
-#articlegrid .info-article {
-    height: 37px;
-    padding: 0 25px;
+#articlegrid .article .info-article {
+    display: none;
 }
 
-#articlegrid .name {
+#articlegrid .article .name {
     color: #000;
     font-weight: 300;
     float: left;
 }
 
-#articlegrid .price {
+#articlegrid .article .price {
     color: #000;
     float: right;
 }
 
-#articlegrid .image {
+#articlegrid .article .image {
     width: 33%; 
     float: left;
     max-width: 100%;
 }
 
-#articlegrid .image:nth-child(3n+1) {
+#articlegrid .article .image:nth-child(3n+1) {
     margin-right: 0.5%;
 }
 
-#articlegrid .image:nth-child(3n+2) {
+#articlegrid .article .image:nth-child(3n+2) {
     margin-right: 0.5%;
 }
 

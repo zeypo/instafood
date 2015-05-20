@@ -30,7 +30,6 @@
      },
 
      onError : function(err) {
-         alert(err.message);
      }
 
  };

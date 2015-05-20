@@ -46,42 +46,62 @@
             <div role="main" class="ui-content">
                 <div class="display">
                     <span class="icon-grid"></span>
-                    <span class="icon-menu"></span>
+                    <span class="icon-menu selected"></span>
                 </div>
-                <!-- <div class="article">
-                    <div class="info-article">
-                        <p class="name">Resto 1</p>
-                        <p class="price">€€</p>
+                <div id="articlemenu" attr-grid="true">
+                    <div class="article">
+                        <div class="info-article">
+                            <p class="name">Resto 1</p>
+                            <p class="price">€€</p>
+                        </div>
+                        <img class="image" src="img/burger.jpg" alt="burger">
                     </div>
-                    <div class="image"><img src="img/burger.jpg" alt="burger"></div>
-                </div>
-                <div class="article">
-                    <div class="info-article">
-                        <p class="name">Resto 1</p>
-                        <p class="price">€€</p>
+                    <div class="article">
+                        <div class="info-article">
+                            <p class="name">Resto 1</p>
+                            <p class="price">€€</p>
+                        </div>
+                        <img class="image" src="img/steak.jpg" alt="burger">
                     </div>
-                    <div class="image"><img src="img/burger.jpg" alt="burger"></div>
-                </div> -->
-                <div class="article-grid">
-<<<<<<< HEAD
-                    <img class="image" src="img/burger.jpg" alt="">
-                    <img class="image" src="img/plateau.jpg" alt="">
-                    <img class="image" src="img/steak.jpg" alt="">
-                    <img class="image" src="img/burger.jpg" alt="">
-                    <img class="image" src="img/plateau.jpg" alt="">
-                    <img class="image" src="img/steak.jpg" alt="">
-=======
-                    <div class="ui-block-a"><img src="img/burger.jpg" alt=""></div>
-                    <div class="ui-block-b"><img src="img/plateau.jpg" alt=""></div>
-                    <div class="ui-block-c"><img src="img/steak.jpg" alt=""></div>
-                    <div class="ui-block-a"><img src="img/burger.jpg" alt=""></div>
-                    <div class="ui-block-b"><img src="img/plateau.jpg" alt=""></div>
-                    <div class="ui-block-c"><img src="img/steak.jpg" alt=""></div>
->>>>>>> f358815080b7a8bdec1a3b0ba13635c0749820ef
+                    <div class="article">
+                        <div class="info-article">
+                            <p class="name">Resto 1</p>
+                            <p class="price">€€</p>
+                        </div>
+                        <img class="image" src="img/plateau.jpg" alt="burger">
+                    </div>
+                    <div class="article">
+                        <div class="info-article">
+                            <p class="name">Resto 1</p>
+                            <p class="price">€€</p>
+                        </div>
+                        <img class="image" src="img/burger.jpg" alt="burger">
+                    </div>
+                    <div class="article">
+                        <div class="info-article">
+                            <p class="name">Resto 1</p>
+                            <p class="price">€€</p>
+                        </div>
+                        <img class="image" src="img/steak.jpg" alt="burger">
+                    </div>
+                    <div class="article">
+                        <div class="info-article">
+                            <p class="name">Resto 1</p>
+                            <p class="price">€€</p>
+                        </div>
+                        <img class="image" src="img/plateau.jpg" alt="burger">
+                    </div>
+                    <!-- <div class="article" attr-grid="false">
+                        <img class="image" src="img/burger.jpg" alt="">
+                        <img class="image" src="img/plateau.jpg" alt="">
+                        <img class="image" src="img/steak.jpg" alt="">
+                        <img class="image" src="img/burger.jpg" alt="">
+                        <img class="image" src="img/plateau.jpg" alt="">
+                        <img class="image" src="img/steak.jpg" alt="">
+                    </div> -->
                 </div>
             </div>
         </div>
-
 
         <!--  LIBS -->
         <script type="text/javascript" src="js/lib/jquery/dist/jquery.min.js"></script>
@@ -92,5 +112,38 @@
 
         <!-- LANCE L'APPLICATION MOBILE -->
         <script type="text/javascript" src="js/index.js"></script>
+
+        <script>
+            $(function() {
+                $('.icon-menu').on('click', function() {
+                    $('.icon-grid').removeClass('selected');
+                    $('.icon-menu').addClass('selected');
+                    var gridtype = $('#articlegrid').attr('attr-grid');
+
+                   if(gridtype === 'false') {
+
+                        $('#articlegrid').attr('attr-grid', 'true');
+                        $('#articlegrid').attr('id', 'articlemenu');
+                   }
+
+                }),
+
+                $('.icon-grid').on('click', function() {
+
+                    $('.icon-menu').removeClass('selected');
+                    $('.icon-grid').addClass('selected');
+
+                   var gridtype = $('#articlemenu').attr('attr-grid');
+
+                   if(gridtype === 'true') {
+
+                        $('#articlemenu').attr('attr-grid', 'false');
+                        $('#articlemenu').attr('id', 'articlegrid');
+                   }
+
+                })
+            })
+            
+        </script>
     </body>
 </html>
