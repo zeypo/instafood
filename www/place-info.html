@@ -1,122 +1,42 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+<script>
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-        <script>
+var map;
+	function initialize() {
 
-		var map;
-			function initialize() {
-			  var mapOptions = {
-			    zoom: 8,
-			    center: new google.maps.LatLng(-34.397, 150.644)
-			  };
-			  map = new google.maps.Map(document.getElementById('map-canvas'),
-			      mapOptions);
-			}
+	  var myLatlng = new google.maps.LatLng(48.870643, 2.332355);
+	  var mapOptions = {
+	    zoom: 16,
+	    center: myLatlng,
+	    disableDefaultUI:true
+	  };
+	  map = new google.maps.Map(document.getElementById('map-canvas'),
+	      mapOptions);
 
-		google.maps.event.addDomListener(window, 'load', initialize);
-        </script>
-        <title>Instafood</title>
-    </head>
-    <body>
-        
-		<div class="app" id="place-info">
-		    <div id="header">
-		        <a href=""><span class="icon-arrow-left"></span></a>
-		        <h1>instafood</h1>
-		        <span class="icon-ellipsis"></span>
-		    </div>
+	  var marker = new google.maps.Marker({
+	      position: myLatlng,
+	      map: map,
+	      title: 'Hello World!'
+	  });
+	};
 
-	        <img src="img/burger.jpg">
-	        <div>
-		        <p>22, rue Saint Albert</p>
-		        <p>€€€</p>
-		        <p>Paris</p>
-		        <p>9/10</p>
-	        </div>
-	        <div id="map-canvas"  class="clear"></div>
-		</div>
+	initialize();
+</script>
 
-        <script type="text/javascript" src="cordova.js"></script>
+<div class="app" id="place-info">
+    <div id="header">
+        <a href="index.html"><span class="icon-arrow-left"></span></a>
+        <h1>instafood</h1>
+        <span class="icon-ellipsis"></span>
+    </div>
 
-        <!--  LIBS -->
-        <script type="text/javascript" src="js/lib/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
-        <script type="text/javascript" src="js/lib/lodash/lodash.min.js"></script>
+    <img src="img/burger.jpg">
+    <div>
+        <p>22, rue Saint Albert</p>
+        <p>€€€</p>
+        <p>Paris</p>
+        <p>9/10</p>
+    </div>
+    <div id="map-canvas" class="clear"></div>
+</div>
 
-        <!--  SCRIPT PERSOS -->
-        <script type="text/javascript" src="js/app/home.js"></script>
-        <script type="text/javascript" src="js/app/api.js"></script>
-
-        <!-- LANCE L'APPLICATION MOBILE -->
-        <script type="text/javascript" src="js/index.js"></script>
-
-        <script>
-
-            $(function() {
-                $('.icon-menu').on('click', function() {
-                    $('.icon-grid').removeClass('selected');
-                    $('.icon-menu').addClass('selected');
-                    var gridtype = $('#articlegrid').attr('attr-grid');
-
-                   if(gridtype === 'false') {
-
-                        $('#articlegrid').attr('attr-grid', 'true');
-                        $('#articlegrid').attr('id', 'articlemenu');
-                   }
-
-                }),
-
-                $('.icon-grid').on('click', function() {
-
-                    $('.icon-menu').removeClass('selected');
-                    $('.icon-grid').addClass('selected');
-
-                   var gridtype = $('#articlemenu').attr('attr-grid');
-
-                   if(gridtype === 'true') {
-
-                        $('#articlemenu').attr('attr-grid', 'false');
-                        $('#articlemenu').attr('id', 'articlegrid');
-                   }
-
-                })
-            })
-
-        </script>
-    </body>
-</html>
