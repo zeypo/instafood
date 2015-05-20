@@ -24,10 +24,11 @@ var HomeController = function(){
             self.$grid.empty();
 
             self.places.forEach(function(place) {
-                var price = place.price ? place.price.currency : '';
-
                 if(place !== null) {
-                    var str  = '<div class="article"><div class="info-article">';
+
+                    var price = place.price ? place.price.currency : '';
+
+                    var str  = '<div class="article" data-id="sqdqsdqsdqsds"><div class="info-article">';
                         str += '<p class="name">' + place.name + '</p>';
                         str += '<p class="price">' + price + '</p>';
                         str += '</div>';

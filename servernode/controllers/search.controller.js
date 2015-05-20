@@ -1,5 +1,6 @@
 'use strict';
 
+var fs         = require('fs');
 var events     = require('events');
 var _          = require('lodash');
 var async      = require('async');
@@ -7,6 +8,7 @@ var Q          = require('q');
 var response   = require('../services/utils/response.server.service');
 var foursquare = require('../services/api/foursquare.api');
 var instagram  = require('../services/api/instagram.api');
+var hashtags   = require('../services/utils/hashtags.json');
 
 /**
  * Récupére les photos intagram à partir
@@ -79,18 +81,38 @@ var cleanInstaData = function(instaData) {
 
     var cleanData = [];
 
-
-    console.log(instaData);
     instaData.forEach(function(value) {
+
+        // On arréte l'itération si l'image n'a pas de tags
+        if(value.tags.length === 0) {
+            return;
+        }
+
+        // On néttoie les photos sans #
+        // Ou comportant des hashtags hors nourriture
+        var isbanned = false;
+        value.tags.forEach(function(tag) {
+
+            hashtags.banned.forEach(function(banned) {
+
+                if(tag.indexOf(banned) > -1) {
+                    console.log(tag);
+                    isbanned = true;
+                }
+            })
+        })
+
         var cleanValue = {};
         cleanValue.tags   = value.tags;
         cleanValue.likes  = value.likes.count;
         cleanValue.images = value.images;
 
-        cleanData.push(cleanValue);
+        if(isbanned !== true) {
+            cleanData.push(cleanValue);
+        }
     });
 
-    return cleanData;
+    //return cleanData;
 
     return _.max(cleanData, function(data) {
         return data.likes;
