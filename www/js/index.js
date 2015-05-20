@@ -23,7 +23,7 @@ var geoloc = {
         console.log(position);
         var options = {
             ll     : position.coords.latitude + ',' + position.coords.longitude,
-            radius : 100
+            radius : 200
         };
 
         api.get(options);
