@@ -1,0 +1,240 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    margin: 0;
+    padding: 0;
+}
+
+.clear {
+    clear: both;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?w3v143');
+    src:url('../fonts/icomoon.eot?#iefixw3v143') format('embedded-opentype'),
+        url('../fonts/icomoon.woff?w3v143') format('woff'),
+        url('../fonts/icomoon.ttf?w3v143') format('truetype'),
+        url('../fonts/icomoon.svg?w3v143#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-left:before {
+    content: "\e094";
+}
+
+.icon-grid:before {
+    content: "\e102";
+}
+
+.icon-menu:before {
+    content: "\e120";
+}
+
+.icon-ellipsis:before {
+    content: "\e129";
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#fff;
+    font-family: 'Open Sans', sans-serif, Arial;
+    font-weight: 400;
+}
+
+/* Portrait layout (default) */
+.app {
+    /* padding:20px 0px 0px 0px;  */    /* image height is 200px (bottom 20px are overlapped with text) */
+    background-color: #fff;
+}
+
+#header {
+    background-color: #ee6e73;
+    color: #f0f0f0;
+    text-align: center;
+    height: 66px;
+    position: relative;
+}
+
+#header h1 {
+    font-size: 1.7em;
+    font-weight: 400;
+    line-height: 66px;
+    padding: 0;
+}
+
+#header a {
+    color: #f0f0f0;
+}
+
+#header .icon-ellipsis {
+    font-size: 1.7em;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+}
+
+.display {
+    height: 66px;
+    box-sizing:border-box;
+    border-bottom: 1px solid #ee6e73;
+}
+
+.display span {
+    float: right;
+    font-size: 2em;
+    line-height: 66px;
+}
+
+.display span:select {
+    color: #ee6e73;
+}
+
+.icon-menu {
+    margin-right: 20px;
+}
+
+.icon-grid {
+    margin-right: 25px;
+}
+
+#articlemenu .article .info-article {
+    display: block;
+    height: 37px;
+    padding: 0 25px;
+}
+
+#articlemenu .article .info-article p{
+    line-height: 37px;
+}
+
+#articlemenu .article .name {
+    color: #000;
+    font-weight: 300;
+    float: left;
+}
+
+#articlemenu .article .price {
+    color: #000;
+    float: right;
+}
+
+#articlemenu .article .image {
+    max-width: 100%;
+}
+
+#articlegrid .article {
+    float: left;
+    width: 33%;
+}
+
+#articlegrid .article .info-article {
+    display: none;
+}
+
+#articlegrid .article .name {
+    color: #000;
+    font-weight: 300;
+    float: left;
+}
+
+#articlegrid .article .price {
+    color: #000;
+    float: right;
+}
+
+#articlegrid .article .image {
+    max-width: 100%;
+}
+
+#articlegrid .article:nth-child(3n+1) {
+    margin-right: 0.5%;
+}
+
+#articlegrid .article:nth-child(3n+2) {
+    margin-right: 0.5%;
+}
+
+.selected {
+    color: #ee6e73;
+}
+
+#header .icon-arrow-left {
+    font-size: 1.7em;
+    display: block;
+    position: absolute;
+    height: 40%;
+    margin: auto;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+}
+
+#place-info p:nth-child(odd) {
+    width: 64%;
+    padding-left: 4%;
+    margin-right: 4%;
+    padding-top: 30px;
+    float: left;
+}
+
+#place-info img {
+    max-width: 100%;
+}
+
+#place-info p:nth-child(3),
+#place-info p:nth-child(4) {
+    margin-bottom: 30px;
+}
+
+#place-info p:nth-child(even) {
+    width: 24%;
+    padding-right: 4%;
+    padding-top: 30px;
+    text-align: right;
+    float: right;
+}
+
+#map-canvas {
+    height: 400px;
+    margin: 0px;
+    padding: 0px;
+}
