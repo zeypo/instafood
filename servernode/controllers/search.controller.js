@@ -79,13 +79,18 @@ var cleanInstaData = function(instaData) {
 
     var cleanData = [];
 
+
+    console.log(instaData);
     instaData.forEach(function(value) {
         var cleanValue = {};
+        cleanValue.tags   = value.tags;
         cleanValue.likes  = value.likes.count;
         cleanValue.images = value.images;
 
         cleanData.push(cleanValue);
     });
+
+    return cleanData;
 
     return _.max(cleanData, function(data) {
         return data.likes;

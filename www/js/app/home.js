@@ -25,8 +25,9 @@ var HomeController = function(){
 
             self.places.forEach(function(place) {
                 var price = place.price ? place.price.currency : '';
+                var photo = place.photos.images.standard_resolution ? place.photos.images.standard_resolution : null;
 
-                if(place !== null) {
+                if(place !== null && photo !== null) {
                     var str  = '<div class="article"><div class="info-article">';
                         str += '<p class="name">' + place.name + '</p>';
                         str += '<p class="price">' + price + '</p>';
