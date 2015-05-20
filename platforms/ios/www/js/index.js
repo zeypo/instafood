@@ -17,29 +17,27 @@
  * under the License.
  */
 
- var geoloc = {
+var geoloc = {
 
-     onSuccess : function(position) {
-         console.log(position);
-         var options = {
-             ll     : position.coords.latitude + ',' + position.coords.longitude,
-             radius : 100
-         };
+    onSuccess : function(position) {
+        console.log(position);
+        var options = {
+            ll     : position.coords.latitude + ',' + position.coords.longitude,
+            radius : 100
+        };
 
-         api.get(options);
-     },
+        api.get(options);
+    },
 
      onError : function(err) {
      }
 
- };
+};
 
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-        this.startBach();
-        console.log('hey');
     },
     // Bind Event Listeners
     //
@@ -53,13 +51,14 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-
-    },
-
-    startBach : function() {
-        console.log('coucou');
         navigator.geolocation.getCurrentPosition(geoloc.onSuccess, geoloc.onError);
     }
 };
 
 app.initialize();
+
+$(function() {
+
+    homeController.init();
+
+})
