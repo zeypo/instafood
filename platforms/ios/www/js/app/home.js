@@ -8,7 +8,7 @@ var HomeController = function(){
     this.$grid  = null,
 
     this.init = function() {
-        this.$grid = $('#articlegrid');
+        this.$grid = $('.articlegrid');
     },
 
     /**
@@ -24,9 +24,17 @@ var HomeController = function(){
             self.$grid.empty();
 
             self.places.forEach(function(place) {
+                var price = place.price ? place.price.currency : '';
+
                 if(place !== null) {
-                    console.log(place);
-                    self.$grid.append('<img class="image" src="' + place.photos.images.standard_resolution.url + '" alt="">');
+                    var str  = '<div class="article"><div class="info-article">';
+                        str += '<p class="name">' + place.name + '</p>';
+                        str += '<p class="price">' + price + '</p>';
+                        str += '</div>';
+                        str += '<img class="image" src="' + place.photos.images.standard_resolution.url + '">';
+                        str += '</div>';
+
+                    self.$grid.append(str);
                 }
             })
         }
