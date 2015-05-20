@@ -29,10 +29,8 @@ var geoloc = {
         api.get(options);
     },
 
-    onError : function(err) {
-        console.log(err);
-        alert(err.message);
-    }
+     onError : function(err) {
+     }
 
 };
 
