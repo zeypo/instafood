@@ -24,6 +24,10 @@ exports.around = function(req, res) {
 
     foursquare.api('explore', req.query, function(err, foursquareData) {
 
+        if(!foursquareData || foursquareData.length < 1) {
+            response.success(res, 200, []);
+        }
+
         async.each(foursquareData, function(data, cb) {
             addData(data).then(function(insta) {
                 batchEventEmitter.emit('data', insta);
@@ -37,13 +41,19 @@ exports.around = function(req, res) {
 
     /* Push une nouvelle entrée dans data quand elle est formaté */
     batchEventEmitter.on('data', function(photo) {
-        photos.push(photo);
+        if(photo && photo !== null) {
+            photos.push(photo);
+        }
     });
 
     /* Renvoit la réponse de l'API lorsque toutes les
      * photos aux alentours sont chargés */
     batchEventEmitter.on('end', function() {
-        response.success(res, 200, photos);
+        var pages = _.sortBy(photos, function(photo){
+            return photo.location.distance;
+        });
+
+        response.success(res, 200, pages);
     });
 
 };
@@ -96,7 +106,6 @@ var cleanInstaData = function(instaData) {
             hashtags.banned.forEach(function(banned) {
 
                 if(tag.indexOf(banned) > -1) {
-                    console.log(tag);
                     isbanned = true;
                 }
             })

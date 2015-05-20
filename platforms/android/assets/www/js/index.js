@@ -22,9 +22,11 @@ var geoloc = {
     onSuccess : function(position) {
         console.log(position);
         var options = {
-            ll     : position.coords.latitude + ',' + position.coords.longitude,
-            radius : 400,
-            section : 'food'
+            ll             : position.coords.latitude + ',' + position.coords.longitude,
+            radius         : 300,
+            section        : 'food',
+            sortByDistance : 1,
+            limit          : 50
         };
 
         api.get(options);
