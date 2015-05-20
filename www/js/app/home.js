@@ -13,7 +13,7 @@ var HomeController = function(){
 
         $(document).off('pagebeforeshow');
         $(document).off('pageload');
-
+ 
         $('.article').on('tap', function() {
             var id = $(this).attr('data-id');
             self.loadPlacePage(id)
