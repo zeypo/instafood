@@ -33,6 +33,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>Instafood</title>
     </head>
@@ -49,7 +50,16 @@
                     <span class="icon-menu selected"></span>
                 </div>
                 <div id="articlemenu" attr-grid="true" class="articlegrid">
+                
                 </div>
+            </div>
+        </div>
+
+        <div data-role="page" class="app" id="place-info">
+            <div data-role="header" id="header">
+                <span class="icon-arrow-left"></span>
+                <h1>instafood</h1>
+                <span class="icon-ellipsis"></span>
             </div>
         </div>
 
@@ -57,6 +67,7 @@
 
         <!--  LIBS -->
         <script type="text/javascript" src="js/lib/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="js/lib/lodash/lodash.min.js"></script>
 
         <!--  SCRIPT PERSOS -->

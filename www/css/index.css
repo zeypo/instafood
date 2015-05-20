@@ -22,6 +22,10 @@
     padding: 0;
 }
 
+.clear {
+    clear: both;
+}
+
 @font-face {
     font-family: 'icomoon';
     src:url('../fonts/icomoon.eot?w3v143');
@@ -86,19 +90,35 @@ body {
     position: relative;
 }
 
-h1 {
+#header h1 {
     font-size: 1.7em;
     font-weight: 400;
     line-height: 66px;
+    padding: 0;
 }
 
-#header span {
+#header a {
+    color: #f0f0f0;
+}
+
+#header .icon-ellipsis {
     font-size: 1.7em;
     transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     display: block;
     position: absolute;
     right: 30px;
+    top: 0;
+    bottom: 0;
+}
+
+#header .icon-arrow-left {
+    font-size: 1.7em;
+    display: block;
+    position: absolute;
+    height: 50%;
+    margin: auto;
+    left: 30px;
     top: 0;
     bottom: 0;
 }
@@ -186,4 +206,31 @@ h1 {
 
 .selected {
     color: #ee6e73;
+}
+
+#place-info p:nth-child(odd) {
+    width: 66%;
+    padding-left: 2%;
+    margin-right: 4%;
+    padding-top: 30px;
+    float: left;
+}
+
+#place-info p:nth-child(3),
+#place-info p:nth-child(4) {
+    margin-bottom: 30px;
+}
+
+#place-info p:nth-child(even) {
+    width: 26%;
+    padding-right: 2%;
+    padding-top: 30px;
+    text-align: right;
+    float: right;
+}
+
+#map-canvas {
+    height: 400px;
+    margin: 0px;
+    padding: 0px;
 }

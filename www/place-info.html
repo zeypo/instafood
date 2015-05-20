@@ -35,25 +35,41 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <script>
+
+		var map;
+			function initialize() {
+			  var mapOptions = {
+			    zoom: 8,
+			    center: new google.maps.LatLng(-34.397, 150.644)
+			  };
+			  map = new google.maps.Map(document.getElementById('map-canvas'),
+			      mapOptions);
+			}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
         <title>Instafood</title>
     </head>
     <body>
-        <div class="app" id="front-page">
-            <div data-role="header" id="header">
-                <h1>instafood</h1>
-                <span class="icon-ellipsis"></span>
-            </div>
+        
+		<div class="app" id="place-info">
+		    <div id="header">
+		        <a href=""><span class="icon-arrow-left"></span></a>
+		        <h1>instafood</h1>
+		        <span class="icon-ellipsis"></span>
+		    </div>
 
-            <div>
-                <div class="display">
-                    <span class="icon-grid"></span>
-                    <span class="icon-menu selected"></span>
-                </div>
-                <div id="articlemenu" attr-grid="true" class="articlegrid">
-
-                </div>
-            </div>
-        </div>
+	        <img src="img/burger.jpg">
+	        <div>
+		        <p>22, rue Saint Albert</p>
+		        <p>€€€</p>
+		        <p>Paris</p>
+		        <p>9/10</p>
+	        </div>
+	        <div id="map-canvas"  class="clear"></div>
+		</div>
 
         <script type="text/javascript" src="cordova.js"></script>
 
@@ -70,6 +86,7 @@
         <script type="text/javascript" src="js/index.js"></script>
 
         <script>
+
             $(function() {
                 $('.icon-menu').on('click', function() {
                     $('.icon-grid').removeClass('selected');
