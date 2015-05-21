@@ -87,6 +87,10 @@
                         {
                             "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"startApp\"><param name=\"ios-package\" value=\"startApp\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -114,6 +118,9 @@
             "PACKAGE_NAME": "com.iesa.instafood"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.iesa.instafood"
+        },
+        "com.lampa.startapp": {
             "PACKAGE_NAME": "com.iesa.instafood"
         }
     },

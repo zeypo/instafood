@@ -15,6 +15,38 @@ var HomeController = function(){
         $('#content').transition('to', 'home.html', 'fade');
     }
 
+    this.initHomeHtml = function() {
+        $(function() {
+            $('.icon-menu').on('click', function() {
+                $('.icon-grid').removeClass('selected');
+                $('.icon-menu').addClass('selected');
+                var gridtype = $('#articlegrid').attr('attr-grid');
+
+               if(gridtype === 'false') {
+
+                    $('#articlegrid').attr('attr-grid', 'true');
+                    $('#articlegrid').attr('id', 'articlemenu');
+               }
+
+            }),
+
+            $('.icon-grid').on('click', function() {
+
+                $('.icon-menu').removeClass('selected');
+                $('.icon-grid').addClass('selected');
+
+               var gridtype = $('#articlemenu').attr('attr-grid');
+
+               if(gridtype === 'true') {
+
+                    $('#articlemenu').attr('attr-grid', 'false');
+                    $('#articlemenu').attr('id', 'articlegrid');
+               }
+
+            })
+        });
+    }
+
     this.init = function() {
         this.$grid = $('.articlegrid');
 
@@ -25,6 +57,10 @@ var HomeController = function(){
         $(document).off('swipeLeft');
         $(document).off('swipeRight');
         $('.options-validate').off('singleTap');
+
+        if (self.panel === "home") {
+            self.initHomeHtml();
+        };
 
         $('.article').on('tap', function() {
             var id = $(this).attr('data-id');
