@@ -1,69 +1,77 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
-        <link rel="stylesheet" type="text/css" href="css/transition.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Instafood</title>
-    </head>
-    <body>
-        <div id="click" style="position: absolute; z-index:1000;">click me pls</div>
-        <div id="content" data-role="page"></div>
-        <div id="loader"><img src="img/loader.gif" /></div>
-        <div id="map-canvas" class="clear"></div>
-        <div id="options">
-            <div class="title-options">
-                <p>Options</p>
-            </div>
-            <div class="content-options">
-                <p class="subtitle-options">Distance</p>
-                <output for="fader" id="range" class="range">400 mètres</output>
-                <div class="clear">
-                    <input type=range min="10" max="1000" value="400" id="fader" step="1" oninput="outputUpdate(value)" class="options-range">
-                </div>
-                <div class="options-validate">Valider</div>
-            </div>
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <link rel="stylesheet" type="text/css" href="css/transition.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>Instafood</title>
+</head>
+<body>
+    <div id="click" style="position: absolute; z-index:1000; top:20px">click me pls</div>
+    <div id="content" data-role="page"></div>
+    <div id="loader"><img src="img/loader.gif" /></div>
+    <div id="map-canvas" class="clear"></div>
+    <div id="options">
+        <div class="title-options">
+            <p>Options</p>
         </div>
+        <div class="content-options">
+            <p class="subtitle-options">Distance</p>
+            <output for="fader" id="range" class="range">400 mètres</output>
+            <div class="clear">
+                <input type=range min="10" max="1000" value="400" id="fader" step="1" oninput="outputUpdate(value)" class="options-range">
+            </div>
+            <div class="options-validate">Valider</div>
+        </div>
+    </div>
 
-        <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
 
-        <!--  LIBS -->
-        <script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
-        <script type="text/javascript" src="js/lib-perso/zepto-transition/touch.js"></script>
-        <script type="text/javascript" src="js/lib-perso/zepto-transition/transition.min.js"></script>
-        <script type="text/javascript" src="js/lib/lodash/lodash.min.js"></script>
+    <!--  LIBS -->
+    <script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
+    <script type="text/javascript" src="js/lib-perso/zepto-transition/touch.js"></script>
+    <script type="text/javascript" src="js/lib-perso/zepto-transition/transition.min.js"></script>
+    <script type="text/javascript" src="js/lib/lodash/lodash.min.js"></script>
 
-        <!--  SCRIPT PERSOS -->
-        <script type="text/javascript" src="js/app/home.js"></script>
-        <script type="text/javascript" src="js/app/api.js"></script>
+    <!--  SCRIPT PERSOS -->
+    <script type="text/javascript" src="js/app/home.js"></script>
+    <script type="text/javascript" src="js/app/api.js"></script>
 
-        <!-- LANCE L'APPLICATION MOBILE -->
-        <script type="text/javascript" src="js/index.js"></script>
+    <!-- LANCE L'APPLICATION MOBILE -->
+    <script type="text/javascript" src="js/index.js"></script>
 
-        <script>
-
+    <script>
+        if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
             $(function() {
                 $('#click').on('click', function() {
                     console.log('clic');
                     navigator.startApp.start("maps://", function(message) { /* success */
-                        alert(message); // => OK
+                        console.log(message); // => OK
                     }, 
                     function(error) { /* error */
-                        alert(error);
+                        console.log(error);
                     });
                 })
             });
+        } else {
+            navigator.startApp.start("com.maps", function(message) {  /* success */
+                console.log(message); // => OK
+            }, 
+            function(error) { /* error */
+                console.log(error);
+            });
+        }
+        
+        function outputUpdate(vol) {
+            document.querySelector('#range').value = vol + ' mètres';
+        }
 
-            function outputUpdate(vol) {
-                document.querySelector('#range').value = vol + ' mètres';
-            }
-
-        </script>
-    </body>
+    </script>
+</body>
 </html>
