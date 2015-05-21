@@ -29,20 +29,45 @@
                 <div class="options-validate">Valider</div>
             </div>
         </div>
+    </div>
 
-        <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
 
-        <!--  LIBS -->
-        <script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
-        <script type="text/javascript" src="js/lib-perso/zepto-transition/touch.js"></script>
-        <script type="text/javascript" src="js/lib-perso/zepto-transition/transition.min.js"></script>
-        <script type="text/javascript" src="js/lib/lodash/lodash.min.js"></script>
+    <!--  LIBS -->
+    <script type="text/javascript" src="http://zeptojs.com/zepto.js"></script>
+    <script type="text/javascript" src="js/lib-perso/zepto-transition/touch.js"></script>
+    <script type="text/javascript" src="js/lib-perso/zepto-transition/transition.min.js"></script>
+    <script type="text/javascript" src="js/lib/lodash/lodash.min.js"></script>
 
-        <!--  SCRIPT PERSOS -->
-        <script type="text/javascript" src="js/app/home.js"></script>
-        <script type="text/javascript" src="js/app/api.js"></script>
+    <!--  SCRIPT PERSOS -->
+    <script type="text/javascript" src="js/app/home.js"></script>
+    <script type="text/javascript" src="js/app/api.js"></script>
 
-        <!-- LANCE L'APPLICATION MOBILE -->
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+    <!-- LANCE L'APPLICATION MOBILE -->
+    <script type="text/javascript" src="js/index.js"></script>
+
+    <script>
+        if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+            $(function() {
+                $('#click').on('click', function() {
+                    console.log('clic');
+                    navigator.startApp.start("maps://", function(message) { /* success */
+                        console.log(message); // => OK
+                    },
+                    function(error) { /* error */
+                        console.log(error);
+                    });
+                })
+            });
+        } else {
+            navigator.startApp.start("com.maps", function(message) {  /* success */
+                console.log(message); // => OK
+            },
+            function(error) { /* error */
+                console.log(error);
+            });
+        }
+
+    </script>
+</body>
 </html>
