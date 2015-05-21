@@ -44,8 +44,11 @@ var geoloc = {
 
         user.options.ll = position.coords.latitude + ',' + position.coords.longitude;
 
+        loader.show($('.articlegrid'));
+
         api.get(user.options, function(data) {
             console.log('Places are loaded !');
+            loader.hide($('.articlegrid'));
             homeController.setPlaces(data.response);
             homeController.generateHtml();
         });
@@ -55,6 +58,29 @@ var geoloc = {
      }
 
 };
+
+var loader = {
+
+    visible : false,
+
+    hide : function(div) {
+        $('#loader').hide(200);
+        div.show(200);
+
+        loader.visible = false;
+    },
+
+    show : function(div) {
+        div.hide(200, function() {
+            $('#loader').show(200);
+        })
+
+        loader.visible = true;
+    }
+
+
+
+}
 
 var app = {
     // Application Constructor

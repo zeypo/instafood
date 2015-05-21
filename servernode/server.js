@@ -1,5 +1,5 @@
 'use strict';
 
 var server = require('./services/server/server.service');
-
-new server(3005);
+var port   = process.env.PORT || 3005;
+new server(port);

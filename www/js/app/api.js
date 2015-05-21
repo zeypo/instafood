@@ -6,15 +6,14 @@ var Api = function() {
 
     this.get = function(options, cb) {
 
-
-        var url = 'http://192.168.1.70:3005/api/search?' + $.param(options);
+        var url = 'https://instafood-zeypo.c9.io/api/search?' + $.param(options);
 
         console.log('Searching in API : ', url);
 
         $.ajax({
             type     : 'GET',
             dataType : 'json',
-            url      : 'http://192.168.15.153:3005/api/search?' + $.param(options),
+            url      : 'https://instafood-zeypo.c9.io/api/search?' + $.param(options),
             success  : cb,
             error    : self.onError
         });

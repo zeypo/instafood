@@ -7,6 +7,7 @@ var HomeController = function(){
     this.places = null;
     this.$grid  = null;
     this.map    = null;
+    this.marker = null;
 
     this.initHome = function() {
         $('#content').transition('to', 'home.html', 'fade');
@@ -121,8 +122,8 @@ var HomeController = function(){
         console.log(document.getElementById('map-canvas'));
     	self.map = new google.maps.Map(document.getElementById('map-canvas'),
     	    mapOptions);
-        console.log('_working');
-    	var marker = new google.maps.Marker({
+
+    	self.marker = new google.maps.Marker({
     	    position: myLatlng,
     	    map: self.map,
     	    title: 'Hello World!'
@@ -130,8 +131,10 @@ var HomeController = function(){
     };
 
     this.updateMapPostion = function(lat, lng) {
-        var center = new google.maps.LatLng(lat, lng);
-        self.map.panTo(center);
+        var myLatlng = new google.maps.LatLng(lat, lng);
+
+        self.marker.setPosition(myLatlng);
+        self.map.panTo(myLatlng);
     }
 };
 
