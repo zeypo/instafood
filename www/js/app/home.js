@@ -8,6 +8,10 @@ var HomeController = function(){
     this.$grid  = null;
     this.map    = null;
 
+    this.initHome = function() {
+        $('#content').transition('to', 'home.html', 'fade');
+    }
+
     this.init = function() {
         this.$grid = $('.articlegrid');
 
@@ -20,7 +24,7 @@ var HomeController = function(){
         });
 
         $('.back-to-home').on('tap', function() {
-            $(document).transition('to', 'index.html', 'flip')
+            $('#content').transition('to', 'home.html', 'flip')
             $(document).on('pageload', function() {
                 self.generateHtml();
             });
@@ -30,10 +34,9 @@ var HomeController = function(){
     this.loadPlacePage = function(id) {
 
         var place = _.find(self.places, { 'id': id});
-        $(document).transition('to', 'place-info.html', 'flip')
+        $('#content').transition('to', 'place-info.html', 'flip')
 
         $(document).on('pagebeforeshow', function() {
-
             $('.content-place').html('');
 
             var str  = '<img src="' + place.photos.images.standard_resolution.url + '">';
