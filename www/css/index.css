@@ -244,7 +244,7 @@ body {
     border-left: 1px solid #ee6e73;
     background-color: #fff;
     position: fixed;
-    right: 0;
+    right: -100%;
     z-index: 100;
     min-height: 100%;
 }
@@ -278,4 +278,35 @@ body {
     float: right;
     color: #000;
     font-weight: 300;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%; 
+    height: 1px;
+    background-color: #000;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  width: 20px;
+  border: 1px solid #989898;
+}
+
+.validate {
+    width: 50%;
+    margin: 40px auto;
+    height: 40px;
+    line-height: 40px;
+    background-color: #ee6e73;
+    color: #f0f0f0;
+    font-weight: 300;
+    text-align: center;
 }

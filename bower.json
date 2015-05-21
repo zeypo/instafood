@@ -23,6 +23,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "jquery-mobile": "~1.4.5",
-    "zepto": "~1.1.6"
+    "zepto": "~1.1.6",
+    "rangeslider.js": "~1.2.1"
   }
 }
