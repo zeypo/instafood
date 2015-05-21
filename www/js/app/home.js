@@ -129,6 +129,7 @@ var HomeController = function(){
                 str += '</div>';
 
             $('.content-place').append(str);
+            $('#map-canvas').css('display', 'block');
             console.log(place.location.lat, place.location.lng);
 
             if(self.map === null) {
@@ -139,8 +140,6 @@ var HomeController = function(){
                 console.log('Update map');
                 self.updateMapPostion(place.location.lat, place.location.lng);
             }
-
-            setTimeout( function() { $('#map-canvas').css('display', 'block'); }, 500);
 
             self.panel = 'place-info';
             self.init();
@@ -204,7 +203,7 @@ var HomeController = function(){
     	  center: myLatlng,
     	  disableDefaultUI:true
     	};
-        console.log(document.getElementById('map-canvas'));
+
     	self.map = new google.maps.Map(document.getElementById('map-canvas'),
     	    mapOptions);
 
