@@ -37,12 +37,18 @@ var geoloc = {
 
     onSuccess : function(position) {
 
+        console.log('Géoloc find');
+
         user.position.lat = position.coords.latitude;
         user.position.lng = position.coords.longitude;
 
         user.options.ll = position.coords.latitude + ',' + position.coords.longitude;
 
-        api.get(user.options);
+        api.get(user.options, function(data) {
+            console.log('Places are loaded !');
+            homeController.setPlaces(data.response);
+            homeController.generateHtml();
+        });
     },
 
      onError : function(err) {
@@ -67,7 +73,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        console.log('cc les mecs');
+        console.log('Device is ready');
         navigator.geolocation.getCurrentPosition(geoloc.onSuccess, geoloc.onError);
     }
 };

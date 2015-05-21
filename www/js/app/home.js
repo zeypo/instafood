@@ -13,7 +13,7 @@ var HomeController = function(){
 
         $(document).off('pagebeforeshow');
         $(document).off('pageload');
- 
+
         $('.article').on('tap', function() {
             var id = $(this).attr('data-id');
             self.loadPlacePage(id)
@@ -62,8 +62,6 @@ var HomeController = function(){
 
         self.$grid = $('.articlegrid');
         if(self.places !== null) {
-
-            console.log('coucou');
             self.$grid.empty();
 
             self.places.forEach(function(place) {
