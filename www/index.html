@@ -13,7 +13,7 @@
         <title>Instafood</title>
     </head>
     <body>
-
+        <div id="click" style="position: absolute; z-index:1000;">click me pls</div>
         <div id="content" data-role="page"></div>
         <div id="loader"><img src="img/loader.gif" /></div>
         <div id="map-canvas" class="clear"></div>
@@ -49,32 +49,14 @@
         <script>
 
             $(function() {
-                $('.icon-menu').on('click', function() {
-                    $('.icon-grid').removeClass('selected');
-                    $('.icon-menu').addClass('selected');
-                    var gridtype = $('#articlegrid').attr('attr-grid');
-
-                   if(gridtype === 'false') {
-
-                        $('#articlegrid').attr('attr-grid', 'true');
-                        $('#articlegrid').attr('id', 'articlemenu');
-                   }
-
-                }),
-
-                $('.icon-grid').on('click', function() {
-
-                    $('.icon-menu').removeClass('selected');
-                    $('.icon-grid').addClass('selected');
-
-                   var gridtype = $('#articlemenu').attr('attr-grid');
-
-                   if(gridtype === 'true') {
-
-                        $('#articlemenu').attr('attr-grid', 'false');
-                        $('#articlemenu').attr('id', 'articlegrid');
-                   }
-
+                $('#click').on('click', function() {
+                    console.log('clic');
+                    navigator.startApp.start("maps://", function(message) { /* success */
+                        alert(message); // => OK
+                    }, 
+                    function(error) { /* error */
+                        alert(error);
+                    });
                 })
             });
 

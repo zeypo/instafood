@@ -13,3 +13,37 @@
         </div>
     </div>
 </div>
+
+<script>
+$(function() {
+    console.log('menu');
+    $('.icon-menu').on('click', function() {
+        console.log('clic2');
+        $('.icon-grid').removeClass('selected');
+        $('.icon-menu').addClass('selected');
+        var gridtype = $('#articlegrid').attr('attr-grid');
+
+       if(gridtype === 'false') {
+
+            $('#articlegrid').attr('attr-grid', 'true');
+            $('#articlegrid').attr('id', 'articlemenu');
+       }
+
+    }),
+
+    $('.icon-grid').on('click', function() {
+
+        $('.icon-menu').removeClass('selected');
+        $('.icon-grid').addClass('selected');
+
+       var gridtype = $('#articlemenu').attr('attr-grid');
+
+       if(gridtype === 'true') {
+
+            $('#articlemenu').attr('attr-grid', 'false');
+            $('#articlemenu').attr('id', 'articlegrid');
+       }
+
+    })
+});
+</script>

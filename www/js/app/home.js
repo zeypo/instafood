@@ -41,7 +41,9 @@ var HomeController = function(){
 
             var str  = '<img src="' + place.photos.images.standard_resolution.url + '">';
                 str += '<div>';
+                str += '<a launch-external="yes" href="geo:' + place.location.lat + ',' + place.location.lng + '">';
                 str += '<p>' + place.location.address + '</p>';
+                str += '</a>';
                 str += '<p>' + self.getPrice(place.price.tier) + '</p>';
                 str += '<p>' + place.location.city + '</p>';
                 str += '<p>' + place.rating + '/10</p>';
