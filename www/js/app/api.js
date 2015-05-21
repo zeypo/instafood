@@ -4,26 +4,19 @@ var Api = function() {
 
     var self = this;
 
-    this.get = function(options) {
+    this.get = function(options, cb) {
 
-        var url = 'http://192.168.15.153:3005/api/search?' + $.param(options);
+        var url = 'http://192.168.1.70:3005/api/search?' + $.param(options);
+
+        console.log('Searching in API : ', url);
 
         $.ajax({
             type     : 'GET',
             dataType : 'json',
             url      : 'http://192.168.15.153:3005/api/search?' + $.param(options),
-            success  : self.onSuccess,
+            success  : cb,
             error    : self.onError
         });
-    };
-
-    /**
-     * Génére le html sur la home après la reception de la position
-     * @param {Array} data
-     */
-    this.onSuccess = function(data) {
-        homeController.setPlaces(data.response);
-        homeController.generateHtml();
     };
 
     this.onError = function(err) {
