@@ -4,10 +4,12 @@ var HomeController = function(){
 
     var self = this;
 
-    this.places = null;
-    this.$grid  = null;
-    this.map    = null;
-    this.marker = null;
+    this.places  = null;
+    this.$grid   = null;
+    this.map     = null;
+    this.marker  = null;
+    this.optOpen = false;
+    this.panel   = 'home';
 
     this.initHome = function() {
         $('#content').transition('to', 'home.html', 'fade');
@@ -18,6 +20,11 @@ var HomeController = function(){
 
         $(document).off('pagebeforeshow');
         $(document).off('pageload');
+        $('.article').off('tap');
+        $('.back-to-home').off('tap');
+        $(document).off('swipeLeft');
+        $(document).off('swipeRight');
+        $('.options-validate').off('singleTap');
 
         $('.article').on('tap', function() {
             var id = $(this).attr('data-id');
@@ -29,8 +36,39 @@ var HomeController = function(){
             $(document).on('pageload', function() {
                 self.generateHtml();
             });
+        });
+
+        $(document).on('swipeLeft', function() {
+            self.openOptions();
+        });
+
+        $(document).on('swipeRight', function() {
+            self.closeOptions();
+        });
+
+        $('.options-validate').on('singleTap', function() {
+            user.options.radius = $('.options-range').val();
+            console.log(user);
+            self.refreshPage();
         })
+
     };
+
+    this.openOptions = function() {
+        $('#options').animate({
+            'right' : 0
+        }, 300, 'ease-out');
+
+        self.optOpen = true;
+    };
+
+    this.closeOptions = function() {
+        $('#options').animate({
+            'right' : '-100%'
+        }, 300, 'ease-in');
+
+        self.optOpen = false;
+    }
 
     this.loadPlacePage = function(id) {
 
@@ -61,6 +99,7 @@ var HomeController = function(){
                 self.updateMapPostion(place.location.lat, place.location.lng);
             }
 
+            self.panel = 'place-info';
             self.init();
 
         });
@@ -93,6 +132,7 @@ var HomeController = function(){
                 }
             });
 
+            self.panel = 'home';
             self.init();
         }
 
@@ -138,6 +178,34 @@ var HomeController = function(){
         self.marker.setPosition(myLatlng);
         self.map.panTo(myLatlng);
     }
+
+
+    /**
+     * Options gestions
+     *
+     */
+    this.refreshPage = function() {
+
+        $('.articlegrid').html('');
+
+        if(self.panel !== 'home') {
+            $('#content').transition('to', 'home.html', 'flip');
+        }
+
+        if(self.optOpen === true) {
+            self.closeOptions();
+        }
+
+        loader.show($('.articlegrid'));
+
+        api.get(user.options, function(data) {
+            console.log('Places are loaded !');
+            loader.hide($('.articlegrid'));
+            homeController.setPlaces(data.response);
+            homeController.generateHtml();
+        });
+    }
+
 };
 
 var homeController = new HomeController();
