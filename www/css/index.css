@@ -67,6 +67,10 @@
     content: "\e129";
 }
 
+html {
+    height: 100%;
+}
+
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -74,6 +78,8 @@ body {
     background-color:#fff;
     font-family: 'Open Sans', sans-serif, Arial;
     font-weight: 400;
+    position: relative;
+    height: 100%;
 }
 
 /* Portrait layout (default) */
@@ -208,6 +214,10 @@ body {
     bottom: 0;
 }
 
+#place-info {
+    height: 100%;
+}
+
 #place-info p:nth-child(odd) {
     width: 64%;
     padding-left: 4%;
@@ -234,6 +244,17 @@ body {
 }
 
 #map-canvas {
+    height: 400px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    display: none;
+    bottom: -350px;
+    z-index: 2000;
+}
+
+.map-canvas-wrapper {
     height: 400px;
     margin: 0px;
     padding: 0px;
