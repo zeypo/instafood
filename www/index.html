@@ -16,7 +16,19 @@
 
         <div id="content" data-role="page"></div>
         <div id="map-canvas" class="clear"></div>
-        <div id="options"></div>
+        <div id="options">
+            <div class="title-options">
+                <p>Options</p>
+            </div>
+            <div class="content-options">
+                <p class="subtitle-options">Distance</p>
+                <output for="fader" id="range" class="range">400 mètres</output>
+                <div class="clear">
+                    <input type=range min="10" max="1000" value="400" id="fader" step="1" oninput="outputUpdate(value)">
+                </div>
+                <div class="validate">Valider</div>
+            </div>
+        </div>
 
         <script type="text/javascript" src="cordova.js"></script>
 
@@ -34,6 +46,7 @@
         <script type="text/javascript" src="js/index.js"></script>
 
         <script>
+
             $(function() {
                 $('.icon-menu').on('click', function() {
                     $('.icon-grid').removeClass('selected');
@@ -62,7 +75,11 @@
                    }
 
                 })
-            })
+            });
+
+            function outputUpdate(vol) {
+                document.querySelector('#range').value = vol + ' mètres';
+            }
 
         </script>
     </body>
