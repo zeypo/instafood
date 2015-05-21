@@ -109,6 +109,10 @@ $(function() {
     homeController.init();
     homeController.initHome();
 
+    function outputUpdate(vol) {
+        user.options.radius = vol;
+    }
+
 })
 
 app.initialize();
