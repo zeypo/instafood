@@ -37,7 +37,6 @@ var HomeController = function(){
         $('#content').transition('to', 'place-info.html', 'flip')
 
         $(document).on('pagebeforeshow', function() {
-            $('.content-place').html('');
 
             var str  = '<img src="' + place.photos.images.standard_resolution.url + '">';
                 str += '<div>';
@@ -48,10 +47,17 @@ var HomeController = function(){
                 str += '</div>';
 
             $('.content-place').append(str);
+            $('#map-canvas').css('display', 'block');
 
-            $('.map-canvas-wrapper').html('<div id="map-canvas" class="clear"></div>');
-            console.log(place.location.lat, place.location.lng);
-            self.getMap(place.location.lat, place.location.lng);
+            if(self.map === null) {
+                console.log('Create map');
+                self.getMap(place.location.lat, place.location.lng);
+            }
+            else {
+                console.log('Update map');
+                self.updateMapPostion(place.location.lat, place.location.lng);
+            }
+
             self.init();
 
         });
@@ -64,8 +70,9 @@ var HomeController = function(){
     this.generateHtml = function() {
 
         self.$grid = $('.articlegrid');
+        $('#map-canvas').css('display', 'none');
+
         if(self.places !== null) {
-            self.$grid.empty();
 
             self.places.forEach(function(place) {
                 if(place !== null && place.photos !== null) {
@@ -111,14 +118,20 @@ var HomeController = function(){
     	  center: myLatlng,
     	  disableDefaultUI:true
     	};
+        console.log(document.getElementById('map-canvas'));
     	self.map = new google.maps.Map(document.getElementById('map-canvas'),
     	    mapOptions);
-
+        console.log('_working');
     	var marker = new google.maps.Marker({
     	    position: myLatlng,
     	    map: self.map,
     	    title: 'Hello World!'
     	});
+    };
+
+    this.updateMapPostion = function(lat, lng) {
+        var center = new google.maps.LatLng(lat, lng);
+        self.map.panTo(center);
     }
 };
 
