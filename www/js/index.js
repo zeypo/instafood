@@ -83,5 +83,6 @@ app.initialize();
 $(function() {
 
     homeController.init();
+    homeController.initHome();
 
 })
