@@ -9,73 +9,73 @@
                 "parents": {
                     "AVFoundation.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "CoreData.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "CoreLocation.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 2
                         }
                     ],
                     "CoreText.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "GLKit.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "ImageIO.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "libc++.dylib": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "libicucore.dylib": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "libz.dylib": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "OpenGLES.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "QuartzCore.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ],
                     "SystemConfiguration.framework": [
                         {
-                            "xml": false,
+                            "xml": "false",
                             "count": 1
                         }
                     ]

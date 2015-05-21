@@ -259,3 +259,44 @@ body {
     margin: 0px;
     padding: 0px;
 }
+
+#options {
+    width: 80%;
+    border-left: 1px solid #ee6e73;
+    background-color: #fff;
+    position: fixed;
+    right: 0;
+    z-index: 100;
+    min-height: 100%;
+}
+
+.title-options {
+    height: 66px;
+    width: 100%;
+    text-align: center;
+    box-sizing:border-box;
+    border-bottom: 1px solid #000;
+}
+
+.title-options p {
+    font-weight: 400;
+    color: #000;
+    font-size: 1.5em;
+    line-height: 66px;
+}
+
+.content-options {
+    padding: 30px 30px;
+}
+
+.subtitle-options {
+    color: #ee6e73;
+    float: left;
+    font-weight: 300;
+}
+
+.range {
+    float: right;
+    color: #000;
+    font-weight: 300;
+}
