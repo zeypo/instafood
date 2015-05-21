@@ -129,6 +129,7 @@ var HomeController = function(){
                 str += '</div>';
 
             $('.content-place').append(str);
+            console.log(place.location.lat, place.location.lng);
 
             if(self.map === null) {
                 console.log('Create map');
