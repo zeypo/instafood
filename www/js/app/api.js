@@ -6,12 +6,13 @@ var Api = function() {
 
     this.get = function(options) {
 
-        var url = 'http://192.168.15.153:3005/api/search?' + $.param(options);
-
+        //var url = 'http://192.168.15.153:3005/api/search?' + $.param(options);
+        var url = 'http://192.168.1.70:3005/api/search?' + $.param(options);
         $.ajax({
             type     : 'GET',
             dataType : 'json',
-            url      : 'http://192.168.15.153:3005/api/search?' + $.param(options),
+            url      : 'http://192.168.1.70:3005/api/search?' + $.param(options),
+            //url      : 'http://192.168.15.153:3005/api/search?' + $.param(options),
             success  : self.onSuccess,
             error    : self.onError
         });
