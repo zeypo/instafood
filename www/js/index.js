@@ -44,11 +44,11 @@ var geoloc = {
 
         user.options.ll = position.coords.latitude + ',' + position.coords.longitude;
 
-        loader.show($('.articlegrid'));
+        loader._show($('.articlegrid'));
 
         api.get(user.options, function(data) {
             console.log('Places are loaded !');
-            loader.hide($('.articlegrid'));
+            loader._hide($('.articlegrid'));
             homeController.setPlaces(data.response);
             homeController.generateHtml();
         });
@@ -63,17 +63,18 @@ var loader = {
 
     visible : false,
 
-    hide : function(div) {
-        $('#loader').hide(200);
-        div.show(200);
+    _hide : function(div) {
+        $('#loader').hide(300);
+        setTimeout(function(){ div.show(300); }, 300);
+        console.log('hide');
 
         loader.visible = false;
     },
 
-    show : function(div) {
-        div.hide(200, function() {
-            $('#loader').show(200);
-        })
+    _show : function(div) {
+        console.log('show');
+        div.hide(300);
+        setTimeout(function(){ $('#loader').show(300); }, 300);
 
         loader.visible = true;
     }
@@ -109,9 +110,11 @@ $(function() {
     homeController.init();
     homeController.initHome();
 
-    function outputUpdate(vol) {
+    $('.options-range').on('change', function() {
+        var vol = $(this).val();
         user.options.radius = vol;
-    }
+        $('#range').html(vol + ' mètres');
+    });
 
 })
 

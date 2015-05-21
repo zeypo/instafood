@@ -13,7 +13,6 @@
         <title>Instafood</title>
     </head>
     <body>
-        <div id="click" style="position: absolute; z-index:1000;">click me pls</div>
         <div id="content" data-role="page"></div>
         <div id="loader"><img src="img/loader.gif" /></div>
         <div id="map-canvas" class="clear"></div>
@@ -25,7 +24,7 @@
                 <p class="subtitle-options">Distance</p>
                 <output for="fader" id="range" class="range">400 mètres</output>
                 <div class="clear">
-                    <input type=range min="10" max="1000" value="400" id="fader" step="1" oninput="outputUpdate(value)" class="options-range">
+                    <input type=range min="10" max="1000" value="400" id="fader" step="1" class="options-range">
                 </div>
                 <div class="options-validate">Valider</div>
             </div>
@@ -45,25 +44,5 @@
 
         <!-- LANCE L'APPLICATION MOBILE -->
         <script type="text/javascript" src="js/index.js"></script>
-
-        <script>
-
-            $(function() {
-                $('#click').on('click', function() {
-                    console.log('clic');
-                    navigator.startApp.start("maps://", function(message) { /* success */
-                        alert(message); // => OK
-                    }, 
-                    function(error) { /* error */
-                        alert(error);
-                    });
-                })
-            });
-
-            function outputUpdate(vol) {
-                document.querySelector('#range').value = vol + ' mètres';
-            }
-
-        </script>
     </body>
 </html>

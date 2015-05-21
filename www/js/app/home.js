@@ -54,8 +54,9 @@ var HomeController = function(){
         $(document).off('pageload');
         $('.article').off('tap');
         $('.back-to-home').off('tap');
-        $(document).off('swipeLeft');
-        $(document).off('swipeRight');
+        $('#header').off('swipeLeft');
+        $('.option-menu').off('tap');
+        $('#header').off('swipeRight');
         $('.options-validate').off('singleTap');
 
         if (self.panel === "home") {
@@ -74,11 +75,15 @@ var HomeController = function(){
             });
         });
 
-        $(document).on('swipeLeft', function() {
+        $('#header').on('swipeLeft', function() {
             self.openOptions();
         });
 
-        $(document).on('swipeRight', function() {
+        $('.option-menu').on('tap', function() {
+            self.openOptions();
+        })
+
+        $('#header').on('swipeRight', function() {
             self.closeOptions();
         });
 
@@ -124,7 +129,6 @@ var HomeController = function(){
                 str += '</div>';
 
             $('.content-place').append(str);
-            $('#map-canvas').css('display', 'block');
 
             if(self.map === null) {
                 console.log('Create map');
@@ -134,6 +138,8 @@ var HomeController = function(){
                 console.log('Update map');
                 self.updateMapPostion(place.location.lat, place.location.lng);
             }
+
+            setTimeout( function() { $('#map-canvas').css('display', 'block'); }, 500);
 
             self.panel = 'place-info';
             self.init();
@@ -223,6 +229,7 @@ var HomeController = function(){
     this.refreshPage = function() {
 
         $('.articlegrid').html('');
+        $('#map-canvas').css('display', 'none');
 
         if(self.panel !== 'home') {
             $('#content').transition('to', 'home.html', 'flip');
@@ -232,11 +239,11 @@ var HomeController = function(){
             self.closeOptions();
         }
 
-        loader.show($('.articlegrid'));
+        loader._show($('.articlegrid'));
 
         api.get(user.options, function(data) {
             console.log('Places are loaded !');
-            loader.hide($('.articlegrid'));
+            loader._hide($('.articlegrid'));
             homeController.setPlaces(data.response);
             homeController.generateHtml();
         });
