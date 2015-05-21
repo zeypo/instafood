@@ -321,7 +321,7 @@ input[type=range]::-webkit-slider-thumb {
   border: 1px solid #989898;
 }
 
-.validate {
+.options-validate {
     width: 50%;
     margin: 40px auto;
     height: 40px;
