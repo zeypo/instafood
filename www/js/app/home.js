@@ -4,6 +4,7 @@ var HomeController = function(){
 
     var self = this;
 
+    this.maplink      = null;
     this.places  = null;
     this.$grid   = null;
     this.map     = null;
@@ -13,7 +14,15 @@ var HomeController = function(){
 
     this.initHome = function() {
         $('#content').transition('to', 'home.html', 'fade');
+
+        if( /iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+            self.maplink = "maps://";
+        } else {
+            self.maplink = "geo:";
+        }
     }
+
+
 
     this.initHomeHtml = function() {
         $(function() {
@@ -120,7 +129,7 @@ var HomeController = function(){
 
             var str  = '<img src="' + place.photos.images.standard_resolution.url + '">';
                 str += '<div>';
-                str += '<a launch-external="yes" href="geo:' + place.location.lat + ',' + place.location.lng + '">';
+                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '">';
                 str += '<p>' + place.location.address + '</p>';
                 str += '</a>';
                 str += '<p>' + self.getPrice(place.price.tier) + '</p>';
