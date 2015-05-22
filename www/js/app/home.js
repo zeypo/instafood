@@ -69,7 +69,7 @@ var HomeController = function(){
         });
 
         $('.back-to-home').on('tap', function() {
-            $('#content').transition('to', 'home.html', 'flip')
+            $('#content').transition('to', 'home.html', 'slide', true)
             $(document).on('pageload', function() {
                 self.generateHtml();
             });
@@ -114,7 +114,7 @@ var HomeController = function(){
     this.loadPlacePage = function(id) {
 
         var place = _.find(self.places, { 'id': id});
-        $('#content').transition('to', 'place-info.html', 'flip')
+        $('#content').transition('to', 'place-info.html', 'slide')
 
         $(document).on('pagebeforeshow', function() {
 
@@ -232,7 +232,7 @@ var HomeController = function(){
         $('#map-canvas').css('display', 'none');
 
         if(self.panel !== 'home') {
-            $('#content').transition('to', 'home.html', 'flip');
+            $('#content').transition('to', 'home.html', 'fade');
         }
 
         if(self.optOpen === true) {

@@ -5,91 +5,25 @@
     },
     "config_munge": {
         "files": {
-            "framework": {
+            "config.xml": {
                 "parents": {
-                    "AVFoundation.framework": [
+                    "/*": [
                         {
-                            "xml": "false",
+                            "xml": "<feature name=\"startApp\"><param name=\"ios-package\" value=\"startApp\" /></feature>",
                             "count": 1
-                        }
-                    ],
-                    "CoreData.framework": [
+                        },
                         {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "CoreLocation.framework": [
-                        {
-                            "xml": "false",
-                            "count": 2
-                        }
-                    ],
-                    "CoreText.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "GLKit.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "ImageIO.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "libc++.dylib": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "libicucore.dylib": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "libz.dylib": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "OpenGLES.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "QuartzCore.framework": [
-                        {
-                            "xml": "false",
-                            "count": 1
-                        }
-                    ],
-                    "SystemConfiguration.framework": [
-                        {
-                            "xml": "false",
+                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
                             "count": 1
                         }
                     ]
                 }
             },
-            "config.xml": {
+            "framework": {
                 "parents": {
-                    "/*": [
+                    "CoreLocation.framework": [
                         {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"startApp\"><param name=\"ios-package\" value=\"startApp\" /></feature>",
+                            "xml": "false",
                             "count": 1
                         }
                     ]
@@ -111,16 +45,10 @@
         "com.google.playservices": {
             "PACKAGE_NAME": "com.iesa.instafood"
         },
-        "com.googlemaps.ios": {
-            "PACKAGE_NAME": "com.iesa.instafood"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.iesa.instafood"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.iesa.instafood"
-        },
         "com.lampa.startapp": {
+            "PACKAGE_NAME": "com.iesa.instafood"
+        },
+        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "com.iesa.instafood"
         }
     },
