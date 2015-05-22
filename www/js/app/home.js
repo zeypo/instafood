@@ -67,6 +67,7 @@ var HomeController = function(){
         $('.option-menu').off('tap');
         $('#header').off('swipeRight');
         $('.options-validate').off('singleTap');
+        $('.back-options').off('tap');
 
         if (self.panel === "home") {
             self.initHomeHtml();
@@ -98,9 +99,12 @@ var HomeController = function(){
 
         $('.options-validate').on('singleTap', function() {
             user.options.radius = $('.options-range').val();
-            console.log(user);
             self.refreshPage();
         })
+
+        $('.back-options').on('tap', function(){
+            self.closeOptions();
+        });
 
     };
 
@@ -135,20 +139,17 @@ var HomeController = function(){
                 str += '<p class="left-info">' + place.location.city + '</p>';
                 str += '<p class="right-info">' + place.rating + '/10</p>';
                 str += '</div>';
-                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?zoom=16">';                
-                str += '<div class="go-button clear">J\'y vais !</div>'
+                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?q=' + place.location.address + '">';
+                str += '<div class="go-button clear">J\'y vais !</div>';
                 str += '</a>';
 
             $('.content-place').append(str);
             $('#map-canvas').css('display', 'block');
-            console.log(place.location.lat, place.location.lng);
 
             if(self.map === null) {
-                console.log('Create map');
                 self.getMap(place.location.lat, place.location.lng);
             }
             else {
-                console.log('Update map');
                 self.updateMapPostion(place.location.lat, place.location.lng);
             }
 
