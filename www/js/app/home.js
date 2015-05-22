@@ -129,13 +129,15 @@ var HomeController = function(){
 
             var str  = '<img src="' + place.photos.images.standard_resolution.url + '">';
                 str += '<div>';
-                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '">';
-                str += '<p>' + place.location.address + '</p>';
-                str += '</a>';
-                str += '<p>' + self.getPrice(place.price.tier) + '</p>';
-                str += '<p>' + place.location.city + '</p>';
-                str += '<p>' + place.rating + '/10</p>';
+                str += '<p class="middle-info">' + place.name + '</p>';
+                str += '<p class="left-info">' + place.location.address + '</p>';
+                str += '<p class="right-info">' + self.getPrice(place.price.tier) + '</p>';
+                str += '<p class="left-info">' + place.location.city + '</p>';
+                str += '<p class="right-info">' + place.rating + '/10</p>';
                 str += '</div>';
+                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?zoom=16">';                
+                str += '<div class="go-button clear">J\'y vais !</div>'
+                str += '</a>';
 
             $('.content-place').append(str);
             $('#map-canvas').css('display', 'block');
