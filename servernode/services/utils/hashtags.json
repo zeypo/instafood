@@ -12,5 +12,18 @@
         "selfie",
         "moi",
         "me"
+    ],
+
+    "depreciated" : [
+        "paris",
+        "france",
+        "photooftheday",
+        "égérie"
+    ],
+
+    "accepted" : [
+        "food",
+        "nouriture",
+        "miam"
     ]
 }

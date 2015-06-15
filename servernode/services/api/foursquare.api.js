@@ -29,16 +29,21 @@ var Foursquare = function() {
     this.getJson = function(path, cb) {
 
         request.get(path, function(err, response, body) {
-            cb(null, JSON.parse(body).response.groups[0].items);
+
+            if(JSON.parse(body).response.isEmpty()) {
+                cb({errors : 'The response gives no results'});
+            }
+            else {
+                cb(null, JSON.parse(body).response.groups[0].items);
+            }
         });
-    }
+    };
 
     this.cleanJson = function(json, cb) {
 
         var cleanJson = [];
 
-        cb(null, _.reduce(json, function(_json, value, key) {
-            //_json[key] = value.venue;
+        cb(null, _.reduce(json, function(_json, value) {
             cleanJson.push(value.venue);
             return cleanJson;
         }));
@@ -61,6 +66,14 @@ var Foursquare = function() {
     };
 
     return this;
-}
+};
+
+Object.prototype.isEmpty = function() {
+    for(var key in this) {
+        if(this.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+};
 
 module.exports = new Foursquare();

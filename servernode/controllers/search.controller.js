@@ -1,6 +1,5 @@
 'use strict';
 
-var fs         = require('fs');
 var events     = require('events');
 var _          = require('lodash');
 var async      = require('async');
@@ -19,20 +18,29 @@ var hashtags   = require('../services/utils/hashtags.json');
  */
 exports.around = function(req, res) {
 
+    if(!req.query.ll) {
+        response.error(res, 501, {errors : 'Parameter ll is missing'});
+    }
+
     var photos = [];
     var batchEventEmitter = new events.EventEmitter();
 
     foursquare.api('explore', req.query, function(err, foursquareData) {
 
-        if(!foursquareData || foursquareData.length < 1) {
-            response.success(res, 200, []);
+        if(err) {
+            response.error(res, 501, err);
+            return;
+        }
+        else if(!foursquareData || foursquareData.length < 1) {
+            response.error(res, 501, {'error' : 'The response gives no results'});
+            return;
         }
 
         async.each(foursquareData, function(data, cb) {
             addData(data).then(function(insta) {
                 batchEventEmitter.emit('data', insta);
                 cb(null);
-            })
+            });
         }, function() {
             batchEventEmitter.emit('end');
         });
@@ -80,7 +88,7 @@ var addData = function(data) {
     });
 
     return deferred.promise;
-}
+};
 
 /**
  * Format les datas instagram pour alléger le retour api
@@ -108,8 +116,24 @@ var cleanInstaData = function(instaData) {
                 if(tag.indexOf(banned) > -1) {
                     isbanned = true;
                 }
-            })
-        })
+            });
+
+            hashtags.accepted.forEach(function(accepted) {
+
+                if(tag.indexOf(accepted) > -1) {
+                    value.likes.count += 300;
+                }
+            });
+
+            hashtags.depreciated.forEach(function(depreciated) {
+
+                if(tag.indexOf(depreciated) > -1) {
+                    value.likes.count -= 100;
+                }
+            });
+        });
+
+
 
         var cleanValue = {};
         cleanValue.tags   = value.tags;
@@ -121,9 +145,7 @@ var cleanInstaData = function(instaData) {
         }
     });
 
-    //return cleanData;
-
     return _.max(cleanData, function(data) {
         return data.likes;
     });
-}
+};

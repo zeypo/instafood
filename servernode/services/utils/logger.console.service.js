@@ -36,5 +36,5 @@ var getColoredMessage = function(type, message) {
         default         : colorName = 246; break;
     }
 
-    return color.bgXterm(colorName)(string(type).capitalize().s) + ' ' + message;
+    return color.bgXterm(colorName)(color.white(string(type).capitalize().s)) + ' ' + message;
 };

@@ -38,5 +38,11 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "org.apache.cordova.geolocation": {
+        "source": {
+            "type": "local",
+            "path": "/Users/tristan/.plugman/cache/org.apache.cordova.geolocation/0.3.12/package"
+        }
     }
 }

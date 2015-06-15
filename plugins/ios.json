@@ -23,7 +23,7 @@
                 "parents": {
                     "CoreLocation.framework": [
                         {
-                            "xml": "false",
+                            "xml": false,
                             "count": 1
                         }
                     ]
@@ -46,6 +46,9 @@
             "PACKAGE_NAME": "com.iesa.instafood"
         },
         "com.lampa.startapp": {
+            "PACKAGE_NAME": "com.iesa.instafood"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.iesa.instafood"
         },
         "org.apache.cordova.geolocation": {

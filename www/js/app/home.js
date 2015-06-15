@@ -4,7 +4,7 @@ var HomeController = function(){
 
     var self = this;
 
-    this.maplink      = null;
+    this.maplink = null;
     this.places  = null;
     this.$grid   = null;
     this.map     = null;
@@ -78,6 +78,7 @@ var HomeController = function(){
         $('.option-menu').off('tap');
         $('#header').off('swipeRight');
         $('.options-validate').off('singleTap');
+        $('.back-options').off('tap');
 
         if (self.panel === "home") {
             self.initHomeHtml();
@@ -109,9 +110,12 @@ var HomeController = function(){
 
         $('.options-validate').on('singleTap', function() {
             user.options.radius = $('.options-range').val();
-            console.log(user);
             self.refreshPage();
         })
+
+        $('.back-options').on('tap', function(){
+            self.closeOptions();
+        });
 
     };
 
@@ -146,20 +150,21 @@ var HomeController = function(){
                 str += '<p class="left-info">' + place.location.city + '</p>';
                 str += '<p class="right-info">' + place.rating + '/10</p>';
                 str += '</div>';
+<<<<<<< HEAD
                 str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?zoom=16&markers=color:blue%' + place.location.lat + ',' + place.location.lng + '">';
+=======
+                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?q=' + place.location.address + '">';
+>>>>>>> c40cb5daa1e199a6dece3e722fd5531baa210822
                 str += '<div class="go-button clear">J\'y vais !</div>';
                 str += '</a>';
 
             $('.content-place').append(str);
             $('#map-canvas').css('display', 'block');
-            console.log(place.location.lat, place.location.lng);
 
             if(self.map === null) {
-                console.log('Create map');
                 self.getMap(place.location.lat, place.location.lng);
             }
             else {
-                console.log('Update map');
                 self.updateMapPostion(place.location.lat, place.location.lng);
             }
 
