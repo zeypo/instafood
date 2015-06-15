@@ -19,7 +19,7 @@ var hashtags   = require('../services/utils/hashtags.json');
 exports.around = function(req, res) {
 
     if(!req.query.ll) {
-        response.error(res, 501, {errors : 'Parameter ll is missing'})
+        response.error(res, 501, {errors : 'Parameter ll is missing'});
     }
 
     var photos = [];
@@ -29,6 +29,10 @@ exports.around = function(req, res) {
 
         if(err) {
             response.error(res, 501, err);
+            return;
+        }
+        else if(!foursquareData || foursquareData.length < 1) {
+            response.error(res, 501, {'error' : 'The response gives no results'});
             return;
         }
 
@@ -113,7 +117,16 @@ var cleanInstaData = function(instaData) {
                     isbanned = true;
                 }
             });
+
+            hashtags.accepted.forEach(function(accepted) {
+
+                if(tag.indexOf(accepted) > -1) {
+                    value.likes.count += 300;
+                }
+            })
         });
+
+
 
         var cleanValue = {};
         cleanValue.tags   = value.tags;

@@ -12,5 +12,11 @@
         "selfie",
         "moi",
         "me"
+    ],
+
+    "accepted" : [
+        "food",
+        "nouriture",
+        "miam"
     ]
 }
