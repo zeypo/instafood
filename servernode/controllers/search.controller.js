@@ -123,7 +123,14 @@ var cleanInstaData = function(instaData) {
                 if(tag.indexOf(accepted) > -1) {
                     value.likes.count += 300;
                 }
-            })
+            });
+
+            hashtags.depreciated.forEach(function(depreciated) {
+
+                if(tag.indexOf(depreciated) > -1) {
+                    value.likes.count -= 100;
+                }
+            });
         });
 
 
