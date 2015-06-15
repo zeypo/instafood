@@ -56,6 +56,17 @@ var HomeController = function(){
         });
     }
 
+    /////////////// TEST SAVE POSITION ////////////
+
+    this.savePosition = function() {
+        $(function() {
+            $('.article').on('click', function() {
+                var positionY = $(document.body).scrollTop();
+                console.log (positionY);
+            })
+        })
+    }
+
     this.init = function() {
         this.$grid = $('.articlegrid');
 
@@ -135,8 +146,8 @@ var HomeController = function(){
                 str += '<p class="left-info">' + place.location.city + '</p>';
                 str += '<p class="right-info">' + place.rating + '/10</p>';
                 str += '</div>';
-                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?zoom=16">';                
-                str += '<div class="go-button clear">J\'y vais !</div>'
+                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?zoom=16&markers=color:blue%' + place.location.lat + ',' + place.location.lng + '">';
+                str += '<div class="go-button clear">J\'y vais !</div>';
                 str += '</a>';
 
             $('.content-place').append(str);

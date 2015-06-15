@@ -90,7 +90,7 @@ body {
 /* Portrait layout (default) */
 .app {
     /* padding:20px 0px 0px 0px;  */    /* image height is 200px (bottom 20px are overlapped with text) */
-    background-color: #fff;
+    background-color: #d3d3d3;
 }
 
 #header {
@@ -125,6 +125,7 @@ body {
 
 .display {
     height: 66px;
+    background-color: #fff;
     box-sizing:border-box;
     border-bottom: 1px solid #ee6e73;
 }
@@ -145,6 +146,16 @@ body {
 
 .icon-grid {
     margin-right: 25px;
+}
+
+#articlemenu .article {
+    height: 334px;
+    border-radius: 4px;
+    width: auto;
+    border: 1px solid #ccc;
+    box-sizing:border-box;
+    margin: 10px 10px 0 10px;
+    background-color: #fff;
 }
 
 #articlemenu .article .info-article {
@@ -354,6 +365,10 @@ body {
     color: #ee6e73;
     float: left;
     font-weight: 300;
+}
+
+.content-place {
+    background-color: #fff;
 }
 
 .range {
