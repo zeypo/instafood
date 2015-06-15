@@ -4,7 +4,7 @@ var HomeController = function(){
 
     var self = this;
 
-    this.maplink      = null;
+    this.maplink = null;
     this.places  = null;
     this.$grid   = null;
     this.map     = null;
