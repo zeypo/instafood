@@ -128,7 +128,7 @@ var cleanInstaData = function(instaData) {
             hashtags.depreciated.forEach(function(depreciated) {
 
                 if(tag.indexOf(depreciated) > -1) {
-                    value.likes.count -= 100;
+                    value.likes.count = value.likes.count - 100;
                 }
             });
         });

@@ -11,14 +11,19 @@
         "bonjour",
         "selfie",
         "moi",
-        "me"
+        "me",
+        "portrait"
     ],
 
     "depreciated" : [
         "paris",
         "france",
         "photooftheday",
-        "égérie"
+        "égérie",
+        "cousins",
+        "famille",
+        "frère",
+        "mama"
     ],
 
     "accepted" : [
