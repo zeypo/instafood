@@ -4,6 +4,7 @@ var events     = require('events');
 var _          = require('lodash');
 var async      = require('async');
 var Q          = require('q');
+var request    = require('request');
 var response   = require('../services/utils/response.server.service');
 var foursquare = require('../services/api/foursquare.api');
 var instagram  = require('../services/api/instagram.api');
@@ -22,7 +23,7 @@ exports.around = function(req, res) {
         response.error(res, 501, {errors : 'Parameter ll is missing'});
     }
 
-    var photos = [];
+    var photos   = [];
     var batchEventEmitter = new events.EventEmitter();
 
     foursquare.api('explore', req.query, function(err, foursquareData) {
@@ -64,6 +65,17 @@ exports.around = function(req, res) {
         response.success(res, 200, pages);
     });
 
+};
+
+/**
+ * Permet de récuperer les hashtags
+ * @return {Object} hashtags
+ */
+var getHastags = function() {
+
+    request.get('http://jsonblob.com/api/jsonBlob/557ec365e4b098bb0a92cb38', function(err, response, body) {
+        return JSON.parse(body);
+    });
 };
 
 /**

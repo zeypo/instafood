@@ -150,11 +150,8 @@ var HomeController = function(){
                 str += '<p class="left-info">' + place.location.city + '</p>';
                 str += '<p class="right-info">' + place.rating + '/10</p>';
                 str += '</div>';
-<<<<<<< HEAD
                 str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?zoom=16&markers=color:blue%' + place.location.lat + ',' + place.location.lng + '">';
-=======
-                str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?q=' + place.location.address + '">';
->>>>>>> c40cb5daa1e199a6dece3e722fd5531baa210822
+                //str += '<a href="' + self.maplink + place.location.lat + ',' + place.location.lng + '?q=' + place.location.address + '">';
                 str += '<div class="go-button clear">J\'y vais !</div>';
                 str += '</a>';
 
